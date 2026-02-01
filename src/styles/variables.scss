@@ -1,0 +1,15 @@
+$primary-color: #C41E3A;
+$text-dark: #1A1A1A;
+$text-light: #FFFFFF;
+$bg-light: #F8FAFB;
+$bg-dark: #000000;
+$font-primary: 'Poppins', sans-serif;
+
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 1024px;
+
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile}) {
+    @content;
+  }
+}

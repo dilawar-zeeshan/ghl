@@ -1,0 +1,110 @@
+@import '../styles/variables.scss';
+
+.homeContainer {
+    width: 100%;
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heroOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); // Dark overlay
+    z-index: 1;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    width: 90%;
+    color: $text-light;
+    padding-top: 80px; // account for navbar
+
+    h1 {
+        font-size: 64px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 24px;
+
+        span {
+            color: $primary-color;
+        }
+
+        @include mobile {
+            font-size: 36px;
+        }
+    }
+
+    p {
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 1.6;
+        max-width: 800px;
+        margin-bottom: 40px;
+        color: rgba(255, 255, 255, 0.9);
+
+        @include mobile {
+            font-size: 16px;
+        }
+    }
+}
+
+.heroButtons {
+    display: flex;
+    gap: 20px;
+}
+
+.primaryBtn {
+    display: inline-block;
+    background-color: $primary-color;
+    color: #fff;
+    padding: 16px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: darken($primary-color, 10%);
+        transform: translateY(-2px);
+    }
+}
+
+.introSection {
+    padding: 100px 0;
+    background-color: $bg-light;
+
+    .container {
+        max-width: 1200px;
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+
+        h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: $text-dark;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    }
+}

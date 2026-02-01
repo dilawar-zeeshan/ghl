@@ -1,0 +1,166 @@
+@import '../styles/variables.scss';
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    background: transparent;
+    color: $text-light; // Default to white text (for transparent bg on dark hero)
+    display: flex;
+    align-items: center;
+
+    &.scrolled {
+        background: #ffffff;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        height: 80px;
+        color: $text-dark;
+
+        .logo h2 {
+            color: $text-dark;
+        }
+    }
+}
+
+.container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    h2 {
+        font-size: 24px;
+        font-weight: 700;
+        color: inherit; // Inherit from navbar
+        transition: color 0.3s ease;
+
+        span {
+            color: $primary-color;
+        }
+    }
+}
+
+.desktopMenu {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    @include mobile {
+        display: none;
+    }
+}
+
+.navLinks {
+    display: flex;
+    gap: 30px;
+
+    li {
+        a {
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+
+            &:hover,
+            &.active {
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+.ctaButton {
+    background-color: $primary-color;
+    color: #fff !important; // Force white text on button
+    padding: 10px 24px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: darken($primary-color, 10%);
+    }
+}
+
+.mobileToggle {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 1001;
+
+    .bar {
+        width: 25px;
+        height: 3px;
+        background-color: currentColor;
+        transition: all 0.3s ease;
+        transform-origin: center;
+
+        &.open {
+            background-color: $text-dark; // Make sure it's visible on white menu
+
+            &:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+
+            &:nth-child(2) {
+                opacity: 0;
+            }
+
+            &:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+        }
+    }
+
+    @include mobile {
+        display: flex;
+    }
+}
+
+.mobileMenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%; // Full width on very small screens or 80%
+    max-width: 300px;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    padding: 100px 40px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000; // Below toggle
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        li a {
+            font-size: 18px;
+            font-weight: 500;
+            color: $text-dark;
+
+            &:hover {
+                color: $primary-color;
+            }
+
+            &.mobileCta {
+                display: inline-block;
+                margin-top: 20px;
+                background: $primary-color;
+                color: #fff;
+                padding: 12px 24px;
+                border-radius: 4px;
+                text-align: center;
+            }
+        }
+    }
+}
