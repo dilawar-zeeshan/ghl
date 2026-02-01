@@ -1,6 +1,11 @@
 # Digital4Design Clone
 
+[![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://dilawar-zeeshan.github.io/ghl/)
+
 This project is a pixel-perfect clone of the Digital4Design website, built with **React**, **Vite**, **SCSS Modules**, and **Framer Motion**. It replicates the design, animations, and responsiveness of the original site.
+
+## 🔗 Live Demo
+[View Live Site](https://dilawar-zeeshan.github.io/ghl/)
 
 ## 🚀 Getting Started
 
