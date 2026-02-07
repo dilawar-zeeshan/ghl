@@ -10,6 +10,7 @@ body {
     font-family: $font-primary;
     background-color: $bg-light;
     color: $text-dark;
+    overflow-x: hidden; // Prevent horizontal scroll globally
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }

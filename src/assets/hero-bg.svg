@@ -1,0 +1,22 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1920" height="1080" fill="#0F172A"/>
+<g opacity="0.8">
+<!-- Left Orange Arrow Group -->
+<path d="M600 800 L800 500 L700 500 L700 200 L500 200 L500 500 L400 500 Z" fill="#F59E0B" fill-opacity="0.15"/>
+<path d="M650 750 L750 600 L700 600 L700 400 L600 400 L600 600 L550 600 Z" fill="#F59E0B" fill-opacity="0.4"/>
+
+<!-- Center Blue Arrow Group (Main Focus) -->
+<path d="M960 100 L1260 500 L1110 500 L1110 900 L810 900 L810 500 L660 500 Z" fill="#3B82F6" fill-opacity="0.2"/>
+<path d="M960 250 L1160 500 L1060 500 L1060 800 L860 800 L860 500 L760 500 Z" fill="#3B82F6" fill-opacity="0.6"/>
+
+<!-- Right Green Arrow Group -->
+<path d="M1320 800 L1520 500 L1420 500 L1420 200 L1220 200 L1220 500 L1120 500 Z" fill="#10B981" fill-opacity="0.15"/>
+<path d="M1370 750 L1470 600 L1420 600 L1420 400 L1320 400 L1320 600 L1270 600 Z" fill="#10B981" fill-opacity="0.4"/>
+
+<!-- Connection Lines / Tech feel -->
+<path d="M0 540 H1920" stroke="white" stroke-opacity="0.05" stroke-width="2"/>
+<path d="M960 0 V1080" stroke="white" stroke-opacity="0.05" stroke-width="2"/>
+<circle cx="960" cy="540" r="300" stroke="white" stroke-opacity="0.03" stroke-width="2"/>
+<circle cx="960" cy="540" r="500" stroke="white" stroke-opacity="0.03" stroke-width="2"/>
+</g>
+</svg>

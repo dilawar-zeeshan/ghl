@@ -1,65 +1,100 @@
 @import '../styles/variables.scss';
 
+// Specialized colors
+$accent-color: $primary-color;
+$dark-bg: #101010;
+$light-bg: #FFFFFF;
+$text-muted-dark: #A1A1A1; // Muted text for dark backgrounds
+$text-muted-light: #555555; // Muted text for light backgrounds
+$border-dark: #333;
+
 .homeContainer {
     width: 100%;
+    // overflow-x: hidden; // Removing to fix sticky sidebar issue - apply to body if needed
+    font-family: 'Poppins', sans-serif;
+    background-color: $dark-bg; // Default to dark
 }
 
+// Reuse Hero
+// Hero - DARK
 .hero {
     position: relative;
     width: 100%;
-    height: 100vh;
-    min-height: 600px;
-    background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center;
+    min-height: 90vh;
+    background-color: #000000; // Black background to match the "HighLevel" text
+    background-image: url('../assets/new-logo.png');
+    background-size: 1800px; // 3x the previous 600px size
+    background-position: bottom left;
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
-}
+    text-align: center;
+    color: #fff;
 
-.heroOverlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7); // Dark overlay
-    z-index: 1;
-}
-
-.heroContent {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    width: 90%;
-    color: $text-light;
-    padding-top: 80px; // account for navbar
-
-    h1 {
-        font-size: 64px;
-        font-weight: 700;
-        line-height: 1.2;
-        margin-bottom: 24px;
-
-        span {
-            color: $primary-color;
-        }
-
-        @include mobile {
-            font-size: 36px;
-        }
+    .heroOverlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        // Gradient from clear to black to blend the logo area
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.9) 100%);
+        z-index: 1;
     }
 
-    p {
-        font-size: 20px;
-        font-weight: 300;
-        line-height: 1.6;
-        max-width: 800px;
-        margin-bottom: 40px;
-        color: rgba(255, 255, 255, 0.9);
+    .heroContent {
+        position: relative;
+        z-index: 2;
+        max-width: 1000px;
+        width: 90%;
+        padding: 0 20px;
 
-        @include mobile {
-            font-size: 16px;
+        .badge {
+            display: inline-block;
+            background: rgba($accent-color, 0.1);
+            color: $accent-color;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 1px solid rgba($accent-color, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: 64px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+
+            span {
+                color: $accent-color;
+                // background: linear-gradient(90deg, #fff, $accent-color);
+                // -webkit-background-clip: text;
+                // background-clip: text;
+                // -webkit-text-fill-color: transparent;
+            }
+
+            @include mobile {
+                font-size: 38px;
+            }
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: rgba(255, 255, 255, 0.8);
+
+            @include mobile {
+                font-size: 16px;
+            }
         }
     }
 }
@@ -67,33 +102,767 @@
 .heroButtons {
     display: flex;
     gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .primaryBtn {
+        background-color: $accent-color;
+        color: #fff;
+        padding: 16px 32px;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        border: 2px solid $accent-color;
+
+        &:hover {
+            background-color: transparent;
+            color: $accent-color;
+            transform: translateY(-2px);
+        }
+    }
+}
+
+// Common Section Styles
+.sectionHeader {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px;
+
+    .subTitle {
+        color: $accent-color;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 14px;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 42px;
+        color: inherit; // Inherit color based on section (dark/light)
+        margin-bottom: 20px;
+        font-weight: 700;
+
+        @include mobile {
+            font-size: 32px;
+        }
+    }
+
+    p {
+        font-size: 18px;
+        color: inherit;
+        opacity: 0.8;
+        line-height: 1.6;
+    }
 }
 
 .primaryBtn {
     display: inline-block;
-    background-color: $primary-color;
+    background-color: $accent-color;
     color: #fff;
-    padding: 16px 40px;
-    font-size: 18px;
+    padding: 14px 30px;
+    border-radius: 6px;
     font-weight: 600;
-    border-radius: 5px;
-    transition: all 0.3s ease;
+    text-decoration: none;
+    transition: background 0.3s ease;
 
     &:hover {
-        background-color: darken($primary-color, 10%);
-        transform: translateY(-2px);
+        background-color: darken($accent-color, 10%);
     }
 }
 
-.introSection {
+// Why GHL - LIGHT
+.whyGhlSection {
     padding: 100px 0;
-    background-color: $bg-light;
+    background-color: $light-bg;
+    color: $text-dark;
 
     .container {
         max-width: 1200px;
         width: 90%;
         margin: 0 auto;
+    }
+
+    .gridThree {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+    }
+
+    .card {
+        padding: 40px;
+        background: #F5F5F5; // Slight grey for contrast on white
+        border-radius: 12px;
         text-align: center;
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: translateY(-10px);
+            background: #fff;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+
+            .iconWrapper {
+                background: $accent-color;
+                color: #fff;
+            }
+        }
+
+        .iconWrapper {
+            width: 70px;
+            height: 70px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin: 0 auto 24px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: $text-dark;
+        }
+
+        p {
+            color: $text-muted-light;
+            line-height: 1.6;
+        }
+    }
+}
+
+// Services Section - Sticky Sidebar Layout - DARK
+.servicesSection {
+    padding: 100px 0;
+    background-color: #000; // Deep black for contrast
+    position: relative;
+    color: #fff; // Force text to white
+
+    .container {
+        max-width: 1200px;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .servicesLayout {
+        display: flex;
+        gap: 60px;
+        position: relative;
+        align-items: flex-start; // Crucial for sticky sidebar to work in flex container
+
+        @include mobile {
+            flex-direction: column;
+        }
+    }
+
+    .servicesSidebar {
+        flex: 0 0 35%;
+        position: sticky;
+        top: 120px;
+        height: fit-content;
+        text-align: left;
+        padding-right: 20px;
+
+        @include mobile {
+            position: relative;
+            top: 0;
+            width: 100%;
+            margin-bottom: 40px;
+            text-align: center;
+            padding-right: 0;
+        }
+
+        .subTitle {
+            color: $accent-color;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 42px;
+            color: #fff;
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.2;
+
+            @include mobile {
+                font-size: 32px;
+            }
+        }
+
+        p {
+            font-size: 18px;
+            color: #ccc;
+            line-height: 1.7;
+        }
+    }
+
+    .servicesContent {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        width: 100%;
+    }
+
+    // New Card Style
+    .serviceCard {
+        background: #111; // Slightly lighter than true black background
+        border-radius: 24px;
+        padding: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #fff;
+        gap: 30px;
+        min-height: 380px;
+
+        @include mobile {
+            flex-direction: column;
+            padding: 30px;
+            text-align: center;
+            min-height: auto;
+        }
+
+        &:hover {
+            transform: scale(1.02);
+            box-shadow: 0 30px 60px rgba(255, 59, 48, 0.15); // Red glow
+            border-color: rgba($accent-color, 0.6);
+            background: #151515;
+
+            .serviceImage img {
+                transform: scale(1.08) rotate(-2deg);
+            }
+
+            .learnMore {
+                color: $accent-color;
+                gap: 10px;
+            }
+        }
+
+        .cardContent {
+            flex: 1;
+            z-index: 2;
+            max-width: 55%;
+
+            @include mobile {
+                max-width: 100%;
+            }
+
+            .iconBadge {
+                width: 50px;
+                height: 50px;
+                background: rgba(255, 59, 48, 0.1);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px;
+                margin-bottom: 24px;
+                color: $accent-color;
+
+                @include mobile {
+                    margin: 0 auto 20px;
+                }
+            }
+
+            h3 {
+                font-size: 28px;
+                margin-bottom: 20px;
+                font-weight: 700;
+                line-height: 1.3;
+            }
+
+            p {
+                color: #b0b0b0;
+                font-size: 16px;
+                line-height: 1.6;
+                margin-bottom: 30px;
+            }
+
+            .learnMore {
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+                color: #fff;
+                font-weight: 600;
+                font-size: 16px;
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+        }
+
+        .serviceImage {
+            flex: 0 0 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+
+            img {
+                width: 100%;
+                height: auto;
+                max-width: 300px;
+                object-fit: contain;
+                transition: transform 0.5s ease;
+                filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+            }
+        }
+    }
+}
+
+// Why Choose Us - LIGHT
+.whyUsSection {
+    padding: 100px 0;
+    background: #fff;
+    color: $text-dark;
+
+    .container {
+        max-width: 1200px;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .cols {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 80px;
+        align-items: center;
+
+        @include mobile {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .colText {
+        .subTitle {
+            color: $accent-color;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        h2 {
+            font-size: 36px;
+            margin-bottom: 24px;
+            color: $text-dark;
+        }
+
+        .introParam {
+            font-size: 18px;
+            color: $text-muted-light;
+            margin-bottom: 30px;
+        }
+
+        .whyList {
+            list-style: none;
+            margin-bottom: 40px;
+
+            li {
+                margin-bottom: 20px;
+                font-size: 16px;
+                color: #444;
+                position: relative;
+                padding-left: 30px;
+
+                &::before {
+                    content: '✔';
+                    position: absolute;
+                    left: 0;
+                    top: 2px;
+                    color: $accent-color;
+                    font-weight: bold;
+                }
+
+                strong {
+                    color: $text-dark;
+                }
+            }
+        }
+    }
+
+    .colImage {
+        img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+    }
+}
+
+// Stats - PROFESSIONAL NAVY BG
+.statsSection {
+    background: linear-gradient(135deg, #001a3d 0%, #000c1d 100%);
+    padding: 80px 0;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+
+    // Subtle mesh pattern
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        background-size: 30px 30px;
+        opacity: 0.5;
+    }
+
+    .container {
+        max-width: 1200px;
+        width: 90%;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    .statsGrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 40px;
+        text-align: center;
+    }
+
+    .statItem {
+        h2 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 5px;
+            background: linear-gradient(135deg, #fff 0%, #a0c4ff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 14px;
+            font-weight: 600;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #a0c4ff;
+        }
+    }
+}
+
+// Portfolio - DARK
+.portfolioSection {
+    padding: 100px 0;
+    background: #121212;
+    color: #fff;
+
+    .container {
+        max-width: 1200px;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .sectionHeader {
+        h2 {
+            color: #fff;
+        }
+
+        p {
+            color: #aaa;
+        }
+    }
+
+    .portfolioGrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+
+        @include mobile {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .portfolioItem {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        cursor: pointer;
+        border: 1px solid #333;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .pOverlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+            color: #fff;
+            transform: translateY(100%); // Hide initially if wanted, or just sit at bottom
+            transition: transform 0.3s ease;
+
+            h3 {
+                font-size: 24px;
+            }
+        }
+
+        &:hover {
+            img {
+                transform: scale(1.1);
+            }
+
+            .pOverlay {
+                transform: translateY(0);
+            }
+        }
+    }
+
+    .centerBtn {
+        text-align: center;
+    }
+
+    .secondaryBtn {
+        display: inline-block;
+        padding: 14px 34px;
+        border: 2px solid $accent-color;
+        color: $accent-color;
+        font-weight: 600;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: $accent-color;
+            color: #fff;
+        }
+    }
+}
+
+// Testimonials - LIGHT
+.testimonialSection {
+    padding: 100px 0;
+    background: #fff;
+    text-align: center;
+    color: $text-dark;
+
+    .container {
+        max-width: 800px;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .sectionHeader {
+        h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: $text-dark;
+        }
+
+        .readMore {
+            color: $accent-color;
+            text-decoration: underline;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .ratingBox {
+            margin-top: 20px;
+
+            .stars {
+                display: block;
+                font-size: 24px;
+                margin-bottom: 10px;
+                color: #FFD700; // Gold stars
+            }
+
+            p {
+                color: $text-muted-light;
+            }
+        }
+    }
+
+    .testimonialGrid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-top: 50px;
+    }
+
+    .testimonialCard {
+        background: $light-bg;
+        padding: 40px;
+        border-radius: 12px;
+        position: relative;
+
+        &::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 80px;
+            color: rgba($accent-color, 0.1);
+            font-family: serif;
+        }
+
+        p {
+            font-size: 18px;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h4 {
+            font-weight: 700;
+            color: $text-dark;
+        }
+    }
+}
+
+// FAQ - DARK
+.faqSection {
+    padding: 100px 0;
+    background: #0F0F0F;
+    color: #fff;
+
+    .container {
+        max-width: 900px;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .sectionHeader {
+        h2 {
+            color: #fff;
+        }
+    }
+
+    .accordion {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .viewMoreFaq {
+            text-align: center;
+            display: inline-block;
+            margin-top: 30px;
+            color: $accent-color;
+            font-weight: 600;
+            text-decoration: none;
+        }
+    }
+
+    .accordionItem {
+        background: #1A1A1A;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid #333;
+        transition: border-color 0.3s ease;
+
+        &:hover {
+            border-color: #555;
+        }
+    }
+
+    .accordionHeader {
+        padding: 20px 25px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.3s ease;
+
+        &:hover {
+            background: #252525;
+        }
+
+        &.active {
+            h4 {
+                color: $accent-color;
+            }
+
+            .icon {
+                color: $accent-color;
+                transform: rotate(180deg);
+            }
+        }
+
+        h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            margin: 0;
+        }
+
+        .icon {
+            font-size: 24px;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+            color: #888;
+        }
+    }
+
+    .accordionBody {
+        background: #1A1A1A;
+        padding: 0 25px;
+        overflow: hidden;
+
+        p {
+            padding-bottom: 25px;
+            color: #ccc;
+            line-height: 1.6;
+            margin-top: -5px; // slight pull up
+        }
+    }
+}
+
+// Bottom CTA
+.ctaSection {
+    padding: 100px 0;
+    background: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+    position: relative;
+    text-align: center;
+    color: #fff;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85); // Darker overlay
+        z-index: 1;
+    }
+
+    .container {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        width: 90%;
+        margin: 0 auto;
 
         h2 {
             font-size: 42px;
@@ -101,10 +870,28 @@
         }
 
         p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .ctaBtn {
+            display: inline-block;
+            background-color: $accent-color;
+            color: #fff;
+            padding: 18px 50px;
             font-size: 18px;
-            color: $text-dark;
-            max-width: 800px;
-            margin: 0 auto;
+            font-weight: 700;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(255, 59, 48, 0.4);
+
+            &:hover {
+                transform: translateY(-5px);
+                background-color: lighten($accent-color, 10%);
+                box-shadow: 0 15px 30px rgba(255, 59, 48, 0.6);
+            }
         }
     }
 }
