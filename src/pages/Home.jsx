@@ -77,7 +77,7 @@ const Home = () => {
 
     return (
         <div className={styles.homeContainer}>
-            {/* Hero Section */}
+            {/* Hero Sectionvvv */}
             <section className={styles.hero}>
                 <div className={styles.heroOverlay}></div>
                 <div className={styles.heroContent}>
